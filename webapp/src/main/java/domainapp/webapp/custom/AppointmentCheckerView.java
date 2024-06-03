@@ -13,11 +13,12 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import domainapp.modules.visit.dom.visit.Visit;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.List;
 
-@Route
+@Route("") // maps to root of Vaadin servlet
 public class AppointmentCheckerView extends VerticalLayout {
     TextField name  = new TextField("Your name");
     TextField pet  = new TextField("Pet name");
@@ -39,11 +40,16 @@ public class AppointmentCheckerView extends VerticalLayout {
             searchResults.removeAll();
             List<Visit> visits = publicAppointmentService.findByOwnerAndPet(name.getValue(), pet.getValue());
             if(visits.isEmpty()) {
-                searchResults.add(new H3("No appointments found, check your search terms all call customer service!"));
+                searchResults.add(new H3("No appointments found, check your search terms or call customer service!"));
             } else {
                 searchResults.add(new H3("Following appointment times for " + pet.getValue() + " found:"));
-                visits.forEach(v -> {
-                    searchResults.add(new Paragraph(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).format(v.getVisitAt())));
+                visits.forEach(visit -> {
+                    var dateTime = visit.getVisitAt();
+                    var p = new Paragraph(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).format(dateTime));
+                    if(dateTime.isBefore(LocalDateTime.now())) {
+                        p.getStyle().setColor("gray");
+                    }
+                    searchResults.add(p);
                 });
             }
         });
