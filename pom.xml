@@ -24,6 +24,7 @@
         <datasource-proxy-spring-boot-starter.version>1.8.1</datasource-proxy-spring-boot-starter.version>
         <maven-timeline.version>1.8</maven-timeline.version>
         <sql-formatter.version>2.0.4</sql-formatter.version>
+        <vaadin.version>24.3.12</vaadin.version>
     </properties>
 
     <build>
@@ -84,6 +85,14 @@
                 <groupId>com.github.vertical-blank</groupId>
                 <artifactId>sql-formatter</artifactId>
                 <version>${sql-formatter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <version>${vaadin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
         </dependencies>
