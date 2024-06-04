@@ -238,6 +238,11 @@
             <artifactId>sql-formatter</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-spring-boot-starter</artifactId>
+        </dependency>
+
     </dependencies>
 
     <profiles>
