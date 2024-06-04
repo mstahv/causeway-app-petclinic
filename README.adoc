@@ -23,7 +23,7 @@ Run using Maven (or check out to your IDE and run via main class (PetClinicApp) 
 
 [source,bash]
 ----
-mvn -pl webapp spring-boot:run
+mvn -pl webapp spring-boot:run -Dspring.profiles.active=dev
 ----
 
 Browse to http://localhost:8080.

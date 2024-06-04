@@ -27,7 +27,10 @@ public class AppointmentCheckerView extends VerticalLayout {
 
     public AppointmentCheckerView(PublicAppointmentService publicAppointmentService) {
         add(new H1("Check your appointment"));
-        add(new Paragraph("Forgot your appointment time? No worries, as long as you still remember your own name and your pet's name, check out your appointments below."));
+        add(new Paragraph("""
+            Forgot your appointment time? No worries, as long as you still remember your own name 
+            and your pet's name, check out your appointments below.
+            """));
         var searchForm = new HorizontalLayout(name, pet, search);
         searchForm.setAlignItems(Alignment.END);
         add(searchForm);
